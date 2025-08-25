@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://your-project.vercel.app/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow important pages
+Allow: /
+Allow: /posts/
+Allow: /categories/
+Allow: /tags/
+Allow: /about/
+Allow: /contact/

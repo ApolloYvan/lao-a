@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F9FAFB;
+  --foreground: #1F2937;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: #3b82f6;
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: #0a0a0a !important;
+}
+
+/* 代码块样式 */
+pre {
+  background: #1e293b !important;
+  color: #fff !important;
+  border-radius: 0.5rem;
+  padding: 20;
+  overflow-x: auto;
+  border: 0px solid #334155;
+}
+
+code {
+  font-family: var(--font-mono);
+  background: #f1f5f9;
+  color: #1e293b;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+/* 代码块内的内联代码 */
+pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+/* 行号样式 */
+.line--highlighted {
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 3px solid #3b82f6;
+  padding-left: 0.75rem;
+  margin-left: -1rem;
+}
+
+.word--highlighted {
+  background: rgba(59, 130, 246, 0.2);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+/* 响应式文本截断 */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
