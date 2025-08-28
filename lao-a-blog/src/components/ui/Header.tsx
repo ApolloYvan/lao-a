@@ -66,10 +66,21 @@ export default function Header() {
         <div
           className={cn(
             "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
-            isMenuOpen ? "max-h-64 pb-4" : "max-h-0"
+            isMenuOpen ? "max-h-80 pb-4" : "max-h-0"
           )}
         >
-          <nav className="flex flex-col space-y-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+          {/* Theme Toggle for Mobile */}
+          <div className="flex justify-center pt-4 pb-3 border-b border-gray-200 dark:border-gray-700">
+            <button 
+              onClick={toggleTheme}
+              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors dark:bg-gray-800 dark:hover:bg-gray-700"
+            >
+              {isDarkTheme ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              <span className="font-medium">{isDarkTheme ? '切换到日间模式' : '切换到夜间模式'}</span>
+            </button>
+          </div>
+          
+          <nav className="flex flex-col space-y-4 pt-4">
             {NAVIGATION_ITEMS.map((item) => (
               <Link
                 key={item.href}
