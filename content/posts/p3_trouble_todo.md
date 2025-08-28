@@ -8,7 +8,7 @@ coverImage: "https://images.pexels.com/photos/3623114/pexels-photo-3623114.jpeg?
 readingTime: 10
 published: true
 ---
-那晚杭州的闷热，至今记忆犹-新。
+那晚杭州的闷热，至今记忆犹新。
 
 2021年，我刚来到杭州这座“卷城”，入职了一家梦想中的互联网大厂。作为一名电商新人，我一头扎进了促销和会场的研发中。
 
