@@ -41,8 +41,8 @@ export default function QrCodeWidget() {
         {/* QR Code */}
         <div className="relative w-32 h-32 mx-auto mb-4">
           <Image
-            src={AUTHOR_INFO.qrcode}
-            alt="微信二维码"
+            src={AUTHOR_INFO.xingqiuQrcode}
+            alt="知识星球二维码"
             fill
             className="rounded-lg object-cover"
           />

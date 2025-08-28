@@ -17,6 +17,7 @@ export const AUTHOR_INFO = {
   bio: '一线大厂7年Java专家，团队面试官',
   avatar: '/images/laoa.jpg',
   qrcode: '/images/qrcode.jpg',
+  xingqiuQrcode: '/images/xingqiu_qrcode.jpg',
   social: {
     github: 'https://github.com/lao-a',
     twitter: 'https://twitter.com/lao-a',
