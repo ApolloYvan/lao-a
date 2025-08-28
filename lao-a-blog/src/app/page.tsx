@@ -20,7 +20,7 @@ export default async function HomePage() {
     <MainLayout>
       <div className="space-y-8">
         {/* Hero Section */}
-        <div className="text-center py-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl">
+        <div className="text-center py-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl index-search">
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
             {SITE_CONFIG.name}
           </h1>

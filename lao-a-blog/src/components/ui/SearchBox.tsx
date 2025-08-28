@@ -29,7 +29,7 @@ export default function SearchBox() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="搜索文章..."
-        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-black"
         onClick={handleClick}
         readOnly
       />
