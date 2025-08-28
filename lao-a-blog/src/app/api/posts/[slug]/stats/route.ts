@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { promises as fs } from 'fs'
-import path from 'path'
+import { kv } from '@vercel/kv'
 
 // 类型定义
 interface PostStats {
@@ -16,11 +15,6 @@ interface StatsData {
   [slug: string]: PostStats
 }
 
-// 文件路径
-const DATA_DIR = path.join(process.cwd(), 'data')
-const STATS_FILE = path.join(DATA_DIR, 'post-stats.json')
-const USER_LIKES_FILE = path.join(DATA_DIR, 'user-likes.json')
-
 // 获取用户标识
 function getUserIdentifier(request: NextRequest): string {
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 
@@ -29,20 +23,31 @@ function getUserIdentifier(request: NextRequest): string {
   return btoa(ip).slice(0, 16)
 }
 
-// 通用文件操作
-async function readJsonFile<T>(filePath: string, defaultValue: T): Promise<T> {
+// KV 存储操作
+async function getStats(): Promise<StatsData> {
   try {
-    await fs.mkdir(path.dirname(filePath), { recursive: true })
-    const data = await fs.readFile(filePath, 'utf-8')
-    return JSON.parse(data)
+    const stats = await kv.get<StatsData>('post_stats')
+    return stats || {}
   } catch {
-    return defaultValue
+    return {}
   }
 }
 
-async function writeJsonFile<T>(filePath: string, data: T): Promise<void> {
-  await fs.mkdir(path.dirname(filePath), { recursive: true })
-  await fs.writeFile(filePath, JSON.stringify(data, null, 2))
+async function setStats(stats: StatsData): Promise<void> {
+  await kv.set('post_stats', stats)
+}
+
+async function getUserLikes(): Promise<UserLikes> {
+  try {
+    const userLikes = await kv.get<UserLikes>('user_likes')
+    return userLikes || {}
+  } catch {
+    return {}
+  }
+}
+
+async function setUserLikes(userLikes: UserLikes): Promise<void> {
+  await kv.set('user_likes', userLikes)
 }
 
 // 获取文章统计数据
@@ -52,11 +57,11 @@ export async function GET(
 ) {
   try {
     const { slug } = await params
-    const stats = await readJsonFile<StatsData>(STATS_FILE, {})
+    const stats = await getStats()
     const postStats = stats[slug] || { views: 0, likes: 0 }
     
     const userIdentifier = getUserIdentifier(request)
-    const userLikes = await readJsonFile<UserLikes>(USER_LIKES_FILE, {})
+    const userLikes = await getUserLikes()
     const userLikedPosts = userLikes[userIdentifier] || {}
     
     return NextResponse.json({
@@ -91,8 +96,8 @@ export async function POST(
     const userIdentifier = getUserIdentifier(request)
     console.log(`[API] User ${userIdentifier} attempting ${action} on post ${slug}`)
     
-    const stats = await readJsonFile<StatsData>(STATS_FILE, {})
-    const userLikes = await readJsonFile<UserLikes>(USER_LIKES_FILE, {})
+    const stats = await getStats()
+    const userLikes = await getUserLikes()
     
     if (!stats[slug]) {
       stats[slug] = { views: 0, likes: 0 }
@@ -128,11 +133,11 @@ export async function POST(
     }
     
     try {
-      await writeJsonFile(STATS_FILE, stats)
-      await writeJsonFile(USER_LIKES_FILE, userLikes)
+      await setStats(stats)
+      await setUserLikes(userLikes)
       console.log(`[API] Successfully updated stats for post ${slug}`)
     } catch (writeError) {
-      console.error('[API] Error writing files:', writeError)
+      console.error('[API] Error writing to KV:', writeError)
       return NextResponse.json(
         { error: 'Failed to save data' },
         { status: 500 }
