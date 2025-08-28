@@ -3,16 +3,11 @@ title: "凌晨零点，一个TODO，差点把我们整个部门抬走"
 date: "2025-08-28"
 summary: "凌晨零点，一个TODO，差点把我们整个部门抬走"
 tags: ["故障复盘", "技术分享", "干货"]
-category: "随笔"
+category: "故障复盘"
 coverImage: "https://images.pexels.com/photos/3623114/pexels-photo-3623114.jpeg?auto=compress&cs=tinysrgb&w=1200"
 readingTime: 10
 published: true
 ---
-好的，收到。我们来为这篇已经拥有了“灵魂”的文章，穿上一件最精美的“外衣”。
-
-我将使用Markdown语法，为您优化排版，突出重点，增强代码和引言的可读性，让它成为一篇真正的、可直接发布的“标杆之作”。
-
------
 那晚杭州的闷热，至今记忆犹-新。
 
 2021年，我刚来到杭州这座“卷城”，入职了一家梦想中的互联网大厂。作为一名电商新人，我一头扎进了促销和会场的研发中。
