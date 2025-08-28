@@ -55,7 +55,7 @@ export default function QrCodeWidget() {
         
         {/* WeChat ID */}
         <div className="mt-3 p-2 bg-gray-50 rounded text-sm text-gray-700">
-          知识号：{AUTHOR_INFO.social.wechat}
+          知识号：{AUTHOR_INFO.social.xingqiu}
         </div>
       </div>
     </div>

@@ -1,5 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { kv } from '@vercel/kv'
+import { createClient } from 'redis'
+
+// Redis 客户端初始化
+let redis: ReturnType<typeof createClient> | null = null
+
+async function getRedisClient() {
+  if (!redis) {
+    redis = await createClient({
+      url: process.env.STORAGE_REDIS_URL || process.env.REDIS_URL || 'redis://localhost:6379'
+    }).connect()
+  }
+  return redis
+}
 
 // 类型定义
 interface PostStats {
@@ -23,31 +35,81 @@ function getUserIdentifier(request: NextRequest): string {
   return btoa(ip).slice(0, 16)
 }
 
-// KV 存储操作
+// Redis 存储操作 - 优化版本
 async function getStats(): Promise<StatsData> {
   try {
-    const stats = await kv.get<StatsData>('post_stats')
-    return stats || {}
-  } catch {
+    const redisClient = await getRedisClient()
+    const statsJson = await redisClient.get('post_stats')
+    return statsJson ? JSON.parse(statsJson) : {}
+  } catch (error) {
+    console.error('Redis getStats error:', error)
     return {}
   }
 }
 
 async function setStats(stats: StatsData): Promise<void> {
-  await kv.set('post_stats', stats)
+  try {
+    const redisClient = await getRedisClient()
+    await redisClient.set('post_stats', JSON.stringify(stats))
+  } catch (error) {
+    console.error('Redis setStats error:', error)
+    throw new Error('Redis database not configured. Please check Redis setup.')
+  }
 }
 
 async function getUserLikes(): Promise<UserLikes> {
   try {
-    const userLikes = await kv.get<UserLikes>('user_likes')
-    return userLikes || {}
-  } catch {
+    const redisClient = await getRedisClient()
+    const userLikesJson = await redisClient.get('user_likes')
+    return userLikesJson ? JSON.parse(userLikesJson) : {}
+  } catch (error) {
+    console.error('Redis getUserLikes error:', error)
     return {}
   }
 }
 
 async function setUserLikes(userLikes: UserLikes): Promise<void> {
-  await kv.set('user_likes', userLikes)
+  try {
+    const redisClient = await getRedisClient()
+    await redisClient.set('user_likes', JSON.stringify(userLikes))
+  } catch (error) {
+    console.error('Redis setUserLikes error:', error)
+    throw new Error('Redis database not configured. Please check Redis setup.')
+  }
+}
+
+// 优化的 Redis 操作（可选）
+async function isUserLikedPost(userId: string, slug: string): Promise<boolean> {
+  try {
+    const redisClient = await getRedisClient()
+    const result = await redisClient.sIsMember(`likes:${slug}`, userId)
+    return result === 1
+  } catch (error) {
+    console.error('Redis isUserLikedPost error:', error)
+    return false
+  }
+}
+
+async function addUserLike(userId: string, slug: string): Promise<void> {
+  try {
+    const redisClient = await getRedisClient()
+    await redisClient.sAdd(`likes:${slug}`, userId)
+    await redisClient.hIncrBy('post_views_likes', `${slug}:likes`, 1)
+  } catch (error) {
+    console.error('Redis addUserLike error:', error)
+    throw new Error('Failed to add user like')
+  }
+}
+
+async function removeUserLike(userId: string, slug: string): Promise<void> {
+  try {
+    const redisClient = await getRedisClient()
+    await redisClient.sRem(`likes:${slug}`, userId)
+    await redisClient.hIncrBy('post_views_likes', `${slug}:likes`, -1)
+  } catch (error) {
+    console.error('Redis removeUserLike error:', error)
+    throw new Error('Failed to remove user like')
+  }
 }
 
 // 获取文章统计数据
@@ -137,9 +199,10 @@ export async function POST(
       await setUserLikes(userLikes)
       console.log(`[API] Successfully updated stats for post ${slug}`)
     } catch (writeError) {
-      console.error('[API] Error writing to KV:', writeError)
+      console.error('[API] Error writing to Redis:', writeError)
+      const errorMessage = writeError instanceof Error ? writeError.message : 'Failed to save data'
       return NextResponse.json(
-        { error: 'Failed to save data' },
+        { error: errorMessage },
         { status: 500 }
       )
     }

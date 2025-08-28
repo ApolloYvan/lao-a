@@ -1,4 +1,4 @@
-import AuthorCard from '@/components/widgets/AuthorCard'
+// import AuthorCard from '@/components/widgets/AuthorCard'
 import QrCodeWidget from '@/components/widgets/QrCodeWidget'
 import PopularPosts from '@/components/widgets/PopularPosts'
 import TagCloud from '@/components/widgets/TagCloud'
