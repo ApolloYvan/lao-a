@@ -29,7 +29,7 @@ export default function QrCodeWidget() {
         
         {/* WeChat ID */}
         <div className="mt-3 p-2 bg-gray-50 rounded text-sm text-gray-700">
-          微信号：{AUTHOR_INFO.social.wechat}
+          微信公众号：{AUTHOR_INFO.social.wechat}
         </div>
       </div>
 
@@ -50,12 +50,12 @@ export default function QrCodeWidget() {
         
         {/* Description */}
         <p className="text-gray-600 text-sm leading-relaxed">
-          加入我的星球，获取最新消息
+          加入我的星球，获取大厂内部指南
         </p>
         
         {/* WeChat ID */}
         <div className="mt-3 p-2 bg-gray-50 rounded text-sm text-gray-700">
-          微信号：{AUTHOR_INFO.social.wechat}
+          知识号：{AUTHOR_INFO.social.wechat}
         </div>
       </div>
     </div>

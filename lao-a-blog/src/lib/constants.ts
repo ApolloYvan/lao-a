@@ -22,13 +22,15 @@ export const AUTHOR_INFO = {
     github: 'https://github.com/lao-a',
     twitter: 'https://twitter.com/lao-a',
     email: 'contact@lao-a.com',
-    wechat: 'lao-a-wechat',
+    wechat: '大厂码农老A',
+    xingqiu: 'lao-a-talk'
   },
 }
 
 export const NAVIGATION_ITEMS = [
   { name: '首页', href: '/' },
   { name: '分类', href: '/categories' },
+  { name: '搜索', href: '/search' },
   { name: '关于', href: '/about' },
   { name: '联系', href: '/contact' },
 ]

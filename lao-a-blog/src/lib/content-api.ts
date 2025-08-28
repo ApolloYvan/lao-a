@@ -207,7 +207,7 @@ export class GitHubContentSource implements ContentSource {
 
 // 创建默认的内容源实例
 export const contentSource = new GitHubContentSource(
-  process.env.GITHUB_REPO || 'your-username/your-blog-repo',
+  process.env.GITHUB_REPO || 'ApolloYvan/lao-a',
   process.env.GITHUB_BRANCH || 'main',
   process.env.GITHUB_TOKEN
 )

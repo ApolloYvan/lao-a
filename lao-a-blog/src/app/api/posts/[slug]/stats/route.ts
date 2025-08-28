@@ -2,34 +2,47 @@ import { NextRequest, NextResponse } from 'next/server'
 import { promises as fs } from 'fs'
 import path from 'path'
 
-// 统计数据文件路径
-const STATS_FILE = path.join(process.cwd(), 'data', 'post-stats.json')
-
-// 确保数据目录存在
-async function ensureDataDir() {
-  const dataDir = path.dirname(STATS_FILE)
-  try {
-    await fs.access(dataDir)
-  } catch {
-    await fs.mkdir(dataDir, { recursive: true })
-  }
+// 类型定义
+interface PostStats {
+  views: number
+  likes: number
 }
 
-// 读取统计数据
-async function readStats() {
+interface UserLikes {
+  [userId: string]: { [slug: string]: boolean }
+}
+
+interface StatsData {
+  [slug: string]: PostStats
+}
+
+// 文件路径
+const DATA_DIR = path.join(process.cwd(), 'data')
+const STATS_FILE = path.join(DATA_DIR, 'post-stats.json')
+const USER_LIKES_FILE = path.join(DATA_DIR, 'user-likes.json')
+
+// 获取用户标识
+function getUserIdentifier(request: NextRequest): string {
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 
+             request.headers.get('x-real-ip') || 
+             'unknown'
+  return btoa(ip).slice(0, 16)
+}
+
+// 通用文件操作
+async function readJsonFile<T>(filePath: string, defaultValue: T): Promise<T> {
   try {
-    await ensureDataDir()
-    const data = await fs.readFile(STATS_FILE, 'utf-8')
+    await fs.mkdir(path.dirname(filePath), { recursive: true })
+    const data = await fs.readFile(filePath, 'utf-8')
     return JSON.parse(data)
   } catch {
-    return {}
+    return defaultValue
   }
 }
 
-// 写入统计数据
-async function writeStats(stats: Record<string, { views: number; likes: number }>) {
-  await ensureDataDir()
-  await fs.writeFile(STATS_FILE, JSON.stringify(stats, null, 2))
+async function writeJsonFile<T>(filePath: string, data: T): Promise<void> {
+  await fs.mkdir(path.dirname(filePath), { recursive: true })
+  await fs.writeFile(filePath, JSON.stringify(data, null, 2))
 }
 
 // 获取文章统计数据
@@ -39,10 +52,17 @@ export async function GET(
 ) {
   try {
     const { slug } = await params
-    const stats = await readStats()
+    const stats = await readJsonFile<StatsData>(STATS_FILE, {})
     const postStats = stats[slug] || { views: 0, likes: 0 }
     
-    return NextResponse.json(postStats)
+    const userIdentifier = getUserIdentifier(request)
+    const userLikes = await readJsonFile<UserLikes>(USER_LIKES_FILE, {})
+    const userLikedPosts = userLikes[userIdentifier] || {}
+    
+    return NextResponse.json({
+      ...postStats,
+      userLiked: !!userLikedPosts[slug]
+    })
   } catch (error) {
     console.error('Error fetching post stats:', error)
     return NextResponse.json(
@@ -60,23 +80,43 @@ export async function POST(
   try {
     const { slug } = await params
     const { action } = await request.json()
-    const stats = await readStats()
+    
+    if (!action || !['view', 'like', 'unlike'].includes(action)) {
+      return NextResponse.json(
+        { error: 'Invalid action' },
+        { status: 400 }
+      )
+    }
+    
+    const userIdentifier = getUserIdentifier(request)
+    const stats = await readJsonFile<StatsData>(STATS_FILE, {})
+    const userLikes = await readJsonFile<UserLikes>(USER_LIKES_FILE, {})
     
     if (!stats[slug]) {
       stats[slug] = { views: 0, likes: 0 }
     }
     
-    if (action === 'view') {
-      stats[slug].views += 1
-    } else if (action === 'like') {
-      stats[slug].likes += 1
-    } else if (action === 'unlike') {
-      stats[slug].likes = Math.max(0, stats[slug].likes - 1)
+    if (!userLikes[userIdentifier]) {
+      userLikes[userIdentifier] = {}
     }
     
-    await writeStats(stats)
+    if (action === 'view') {
+      stats[slug].views += 1
+    } else if (action === 'like' && !userLikes[userIdentifier][slug]) {
+      stats[slug].likes += 1
+      userLikes[userIdentifier][slug] = true
+    } else if (action === 'unlike' && userLikes[userIdentifier][slug]) {
+      stats[slug].likes = Math.max(0, stats[slug].likes - 1)
+      userLikes[userIdentifier][slug] = false
+    }
     
-    return NextResponse.json(stats[slug])
+    await writeJsonFile(STATS_FILE, stats)
+    await writeJsonFile(USER_LIKES_FILE, userLikes)
+    
+    return NextResponse.json({
+      ...stats[slug],
+      userLiked: !!userLikes[userIdentifier][slug]
+    })
   } catch (error) {
     console.error('Error updating post stats:', error)
     return NextResponse.json(

@@ -5,9 +5,11 @@ import { useState } from 'react'
 import { Menu, X, Search } from 'lucide-react'
 import { NAVIGATION_ITEMS, SITE_CONFIG } from '@/lib/constants'
 import { cn } from '@/lib/utils'
+import { useRouter } from 'next/navigation'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter()
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md">
@@ -35,7 +37,10 @@ export default function Header() {
 
           {/* Search Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="p-2 text-gray-600 hover:text-blue-600 transition-colors">
+            <button 
+              onClick={() => router.push('/search')}
+              className="p-2 text-gray-600 hover:text-blue-600 transition-colors"
+            >
               <Search className="h-5 w-5" />
             </button>
           </div>
@@ -67,7 +72,13 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
-            <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors">
+            <button 
+              onClick={() => {
+                router.push('/search')
+                setIsMenuOpen(false)
+              }}
+              className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors"
+            >
               <Search className="h-5 w-5" />
               <span>搜索</span>
             </button>

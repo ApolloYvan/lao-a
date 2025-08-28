@@ -1,8 +1,8 @@
 import { SITE_CONFIG } from '@/lib/constants'
 import MainLayout from '@/components/layout/MainLayout'
 import PostCard from '@/components/ui/PostCard'
-import { Search } from 'lucide-react'
 import { contentSource } from '@/lib/content-api'
+import SearchBox from '@/components/ui/SearchBox'
 
 async function getPosts() {
   try {
@@ -30,14 +30,7 @@ export default async function HomePage() {
           
           {/* Search Box */}
           <div className="max-w-md mx-auto">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-              <input
-                type="text"
-                placeholder="搜索文章..."
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-              />
-            </div>
+            <SearchBox />
           </div>
         </div>
 

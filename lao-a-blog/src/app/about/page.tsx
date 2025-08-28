@@ -88,9 +88,9 @@ export default function AboutPage() {
                 <h2>我是谁？</h2>
                 <p>我是<strong>大厂码农老A</strong>｜一线大厂7年Java专家｜团队面试官</p>
 
-                <p>在这里，不聊高大上的理论，只分享关于技术、职场、成长的“B面”真话</p>
+                <p>在这里，不灌鸡汤，不聊高大上的理论，只分享关于技术、职场、成长的“B面”真话</p>
 
-                <p>为有需要的朋友提供1v1模拟面试、简历精修等深度服务，陪你走好从简历到Offer的“最后一公里”</p>
+                <p>可提供1v1模拟面试、简历精修等深度服务，陪你走好从简历到Offer的“最后一公里”</p>
 
                 <p>欢迎关注，看见一个更真实的程序员世界</p>
 
@@ -107,8 +107,8 @@ export default function AboutPage() {
                 
                 <div className="bg-blue-50 border-l-4 border-blue-400 p-4 my-6">
                   <p className="text-blue-800 font-medium">
-                    💡 <strong>记住</strong>：我不是来当你的&ldquo;人生导师&rdquo;的，我是来当你的&ldquo;师兄&rdquo;的。
-                    陪你走好程序员的每一步，说点别人不敢说的真话。
+                    💡 我不是来当你的&ldquo;人生导师&rdquo;的，而是想成为你的&ldquo;师兄&rdquo;。
+                    陪你走好程序员的每一步，喜欢说点真话。
                   </p>
                 </div>
               </div>
