@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { SITE_CONFIG } from "@/lib/constants";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 const inter = localFont({
   src: [
@@ -90,7 +91,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://api.github.com" />
       </head>
       <body className="font-sans antialiased">
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

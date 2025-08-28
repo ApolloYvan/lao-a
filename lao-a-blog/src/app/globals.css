@@ -15,26 +15,196 @@
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 深色模式配置 */
+@theme {
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  
+  --color-red-500: #ef4444;
+  
+  --color-green-600: #059669;
+  
+  --color-white: #ffffff;
+  --color-black: #000000;
+}
+
+/* 深色模式变量 */
+.dark {
+  --color-gray-50: #111827;
+  --color-gray-100: #1f2937;
+  --color-gray-200: #374151;
+  --color-gray-300: #4b5563;
+  --color-gray-400: #6b7280;
+  --color-gray-500: #9ca3af;
+  --color-gray-600: #d1d5db;
+  --color-gray-700: #e5e7eb;
+  --color-gray-800: #f3f4f6;
+  --color-gray-900: #f9fafb;
+  
+  --color-white: #000000;
+  --color-black: #ffffff;
 }
 
 body {
   background: var(--background);
-  color: #0a0a0a !important;
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 深色模式样式 */
+body.dark {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+body.dark pre {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #475569 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body.dark code {
+  background: #334155;
+  color: #f1f5f9;
 }
 
 /* 代码块样式 */
 pre {
-  background: #1e293b !important;
-  color: #fff !important;
+  background: #282a36 !important;
+  color: #f8f8f2 !important;
   border-radius: 0.5rem;
-  padding: 20;
+  padding: 1.25rem;
   overflow-x: auto;
-  border: 0px solid #334155;
+  border: 1px solid #44475a;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace !important;
+}
+
+/* Prism.js 语法高亮样式覆盖 */
+pre code {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+}
+
+/* 高对比度语法高亮主题 */
+pre .token.comment,
+pre .token.prolog,
+pre .token.doctype,
+pre .token.cdata {
+  color: #8b949e !important;
+  font-style: italic;
+}
+
+pre .token.punctuation {
+  color: #f8f8f2 !important;
+}
+
+pre .token.namespace {
+  opacity: 0.7;
+}
+
+/* 数字和布尔值 - 亮黄色 */
+pre .token.property,
+pre .token.tag,
+pre .token.boolean,
+pre .token.number,
+pre .token.constant,
+pre .token.symbol,
+pre .token.deleted {
+  color: #ffd700 !important;
+  font-weight: 500;
+}
+
+/* 字符串 - 亮绿色 */
+pre .token.selector,
+pre .token.attr-name,
+pre .token.string,
+pre .token.char,
+pre .token.builtin,
+pre .token.inserted {
+  color: #50fa7b !important;
+}
+
+/* 操作符 - 亮红色 */
+pre .token.operator,
+pre .token.entity,
+pre .token.url {
+  color: #ff79c6 !important;
+}
+
+/* 关键字 - 亮紫色 */
+pre .token.atrule,
+pre .token.attr-value,
+pre .token.keyword {
+  color: #bd93f9 !important;
+  font-weight: 500;
+}
+
+/* 函数和类名 - 亮蓝色 */
+pre .token.function,
+pre .token.class-name {
+  color: #8be9fd !important;
+  font-weight: 500;
+}
+
+/* 变量 - 橙色 */
+pre .token.regex,
+pre .token.important,
+pre .token.variable {
+  color: #ffb86c !important;
+}
+
+pre .token.important,
+pre .token.bold {
+  font-weight: bold;
+}
+
+pre .token.italic {
+  font-style: italic;
+}
+
+/* Bash 特殊处理 */
+pre .language-bash .token.function {
+  color: #8be9fd !important;
+}
+
+pre .language-bash .token.string {
+  color: #50fa7b !important;
+}
+
+pre .language-bash .token.comment {
+  color: #6272a4 !important;
+}
+
+/* Java 特殊处理 */
+pre .language-java .token.keyword {
+  color: #bd93f9 !important;
+}
+
+pre .language-java .token.class-name {
+  color: #8be9fd !important;
+}
+
+pre .language-java .token.function {
+  color: #50fa7b !important;
 }
 
 code {
