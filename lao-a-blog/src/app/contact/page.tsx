@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import MainLayout from '@/components/layout/MainLayout'
 import { AUTHOR_INFO } from '@/lib/constants'
-import { Mail, Github, Twitter, MessageCircle, Send, CheckCircle } from 'lucide-react'
+import { Mail, Github, ExternalLink, MessageCircle, Send, CheckCircle } from 'lucide-react'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -90,17 +90,51 @@ export default function ContactPage() {
 
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <Twitter className="h-5 w-5 text-blue-600" />
+                    <ExternalLink className="h-5 w-5 text-blue-600" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">Twitter</p>
+                    <p className="font-medium text-gray-900">稀土掘金</p>
                     <a
-                      href={AUTHOR_INFO.social.twitter}
+                      href={AUTHOR_INFO.social.juejin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:text-blue-800 transition-colors"
                     >
-                      {AUTHOR_INFO.social.twitter.replace('https://', '')}
+                      juejin.cn
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <ExternalLink className="h-5 w-5 text-orange-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">CSDN</p>
+                    <a
+                      href={AUTHOR_INFO.social.csdn}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      blog.csdn.net
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <ExternalLink className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">知乎</p>
+                    <a
+                      href={AUTHOR_INFO.social.zhihu}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      zhihu.com
                     </a>
                   </div>
                 </div>

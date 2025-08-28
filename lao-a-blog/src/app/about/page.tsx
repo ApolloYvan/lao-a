@@ -1,7 +1,7 @@
 import MainLayout from '@/components/layout/MainLayout'
 import { AUTHOR_INFO } from '@/lib/constants'
 import Image from 'next/image'
-import { Mail, Github, Twitter, MessageCircle, CheckCircle } from 'lucide-react'
+import { Mail, Github, ExternalLink, MessageCircle, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -63,13 +63,31 @@ export default function AboutPage() {
                     <span>GitHub</span>
                   </a>
                   <a
-                    href={AUTHOR_INFO.social.twitter}
+                    href={AUTHOR_INFO.social.juejin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
                   >
-                    <Twitter className="h-4 w-4" />
-                    <span>Twitter</span>
+                    <ExternalLink className="h-4 w-4" />
+                    <span>稀土掘金</span>
+                  </a>
+                  <a
+                    href={AUTHOR_INFO.social.csdn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    <span>CSDN</span>
+                  </a>
+                  <a
+                    href={AUTHOR_INFO.social.zhihu}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    <span>知乎</span>
                   </a>
                   <div className="flex items-center gap-2 text-gray-600">
                     <MessageCircle className="h-4 w-4" />
@@ -111,6 +129,9 @@ export default function AboutPage() {
                     陪你走好程序员的每一步，喜欢说点真话。
                   </p>
                 </div>
+                
+                <h2>关于这个博客</h2>
+                <p>这个博客是用Cursor和Gemini搭建的，耗时2小时，感兴趣可以评论区留言，呼声高的话我出个教程</p>
               </div>
             </div>
 
