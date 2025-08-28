@@ -58,8 +58,15 @@ export default function PostStats({ slug, showStats = true }: PostStatsProps) {
       if (response.ok) {
         const data = await response.json()
         setStats(data)
+        
+        // 如果操作没有执行（比如重复点赞），显示提示
+        if (data.actionPerformed === false) {
+          setError('您已经操作过了')
+          setTimeout(() => setError(null), 2000) // 2秒后自动清除
+        }
       } else {
-        setError('操作失败，请重试')
+        const errorData = await response.json().catch(() => ({}))
+        setError(errorData.error || '操作失败，请重试')
       }
     } catch (error) {
       console.error('Error updating like:', error)

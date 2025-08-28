@@ -89,6 +89,8 @@ export async function POST(
     }
     
     const userIdentifier = getUserIdentifier(request)
+    console.log(`[API] User ${userIdentifier} attempting ${action} on post ${slug}`)
+    
     const stats = await readJsonFile<StatsData>(STATS_FILE, {})
     const userLikes = await readJsonFile<UserLikes>(USER_LIKES_FILE, {})
     
@@ -100,22 +102,47 @@ export async function POST(
       userLikes[userIdentifier] = {}
     }
     
+    let actionPerformed = false
+    
     if (action === 'view') {
       stats[slug].views += 1
-    } else if (action === 'like' && !userLikes[userIdentifier][slug]) {
-      stats[slug].likes += 1
-      userLikes[userIdentifier][slug] = true
-    } else if (action === 'unlike' && userLikes[userIdentifier][slug]) {
-      stats[slug].likes = Math.max(0, stats[slug].likes - 1)
-      userLikes[userIdentifier][slug] = false
+      actionPerformed = true
+    } else if (action === 'like') {
+      if (!userLikes[userIdentifier][slug]) {
+        stats[slug].likes += 1
+        userLikes[userIdentifier][slug] = true
+        actionPerformed = true
+        console.log(`[API] User ${userIdentifier} liked post ${slug}`)
+      } else {
+        console.log(`[API] User ${userIdentifier} already liked post ${slug}`)
+      }
+    } else if (action === 'unlike') {
+      if (userLikes[userIdentifier][slug]) {
+        stats[slug].likes = Math.max(0, stats[slug].likes - 1)
+        userLikes[userIdentifier][slug] = false
+        actionPerformed = true
+        console.log(`[API] User ${userIdentifier} unliked post ${slug}`)
+      } else {
+        console.log(`[API] User ${userIdentifier} already unliked post ${slug}`)
+      }
     }
     
-    await writeJsonFile(STATS_FILE, stats)
-    await writeJsonFile(USER_LIKES_FILE, userLikes)
+    try {
+      await writeJsonFile(STATS_FILE, stats)
+      await writeJsonFile(USER_LIKES_FILE, userLikes)
+      console.log(`[API] Successfully updated stats for post ${slug}`)
+    } catch (writeError) {
+      console.error('[API] Error writing files:', writeError)
+      return NextResponse.json(
+        { error: 'Failed to save data' },
+        { status: 500 }
+      )
+    }
     
     return NextResponse.json({
       ...stats[slug],
-      userLiked: !!userLikes[userIdentifier][slug]
+      userLiked: !!userLikes[userIdentifier][slug],
+      actionPerformed
     })
   } catch (error) {
     console.error('Error updating post stats:', error)
