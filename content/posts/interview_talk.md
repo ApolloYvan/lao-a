@@ -1,7 +1,7 @@
 ---
 title: "面试官：“聊聊你最复杂的项目？” 为什么90%的候选人第一句就栽了？"
 date: "2025-09-02"
-summary: "这是我的第一篇博客文章，分享我创建这个博客的初衷和未来的内容规划。"
+summary: "最近团队业务扩张，所以有一些HC，我也因此成了“兼职面试官”，每天都在跟不同的候选人打交道。面得多了，一些有意思的现象就浮现了出来。这篇文章，就是我最近的一些观察和思考。"
 tags: ["面试", "干货"]
 category: "面试"
 coverImage: "https://images.pexels.com/photos/277124/pexels-photo-277124.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
