@@ -1,7 +1,7 @@
 ---
 title: "我帮一位“5年经验”的粉丝改了12次简历，大厂HR看完秒约"
 date: "2025-09-15"
-summary: "**在第二篇面试文章发布后，反响比较强烈，大家的点赞收藏和评论区的互动我都有在关注，特别是收藏量让我比较吃惊，说明**求职**是大家的刚需。很多兄弟在后台私信我，想再聊聊简历，所以第三篇文章我决定输出一些简历方面的干货，实实在在地教大家如何把一份平庸的简历，一步一步优化成让HR眼前一亮的**SSP Offer收割机**。"
+summary: "在第二篇面试文章发布后，反响比较强烈，大家的点赞收藏和评论区的互动我都有在关注，特别是收藏量让我比较吃惊，说明**求职**是大家的刚需。很多兄弟在后台私信我，想再聊聊简历，所以第三篇文章我决定输出一些简历方面的干货，实实在在地教大家如何把一份平庸的简历，一步一步优化成让HR眼前一亮的SSP Offer收割机。"
 tags: ["简历", "面试", "干货"]
 category: "简历"
 coverImage: "https://images.pexels.com/photos/323933/pexels-photo-323933.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -21,20 +21,20 @@ published: true
 
 为了让文章有血有肉，我上周在沸点搞了个抽奖活动，承诺免费帮一位粉丝“精修”简历，并把过程写成文章。
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/e00d6b16d9254839b0f324d138f82885~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5aSn5Y6C56CB5Yac6ICBQQ==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjE0NzgwMzI4OTYxOTA0NyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1758009893&x-orig-sign=5vBV9zCYK7oVtwPiQU%2FPzbS2H%2Fg%3D)
+<img width="1964" height="454" alt="image" src="https://github.com/user-attachments/assets/4bdc0832-71fc-4e81-a245-6dc58e59bd61" />
 
 结果比较惨淡😂   
 虽然有几位读者留言，但是实际仅有一位粉丝参与...没办法，抽奖做罢，我直接在评论区公布了结果并私聊了这位粉丝。但他并未回复。
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/0217f99f80fc492baceaa6d769a0094f~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5aSn5Y6C56CB5Yac6ICBQQ==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjE0NzgwMzI4OTYxOTA0NyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1758009925&x-orig-sign=F1hpMHHHtB51R%2FE4SwFaxandpnk%3D)
+<img width="1430" height="758" alt="image" src="https://github.com/user-attachments/assets/e36365c8-0dbd-4138-b706-bbad19a29f3e" />
 
 就在我准备从过往面试过的候选人中，随便挑一份简历来当案例时，突然收到了一条沸点回复，一位前端的同学询问现在点关注还来得及么。
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/15c33993ba8743aeadae18e5ef2b9bb0~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5aSn5Y6C56CB5Yac6ICBQQ==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjE0NzgwMzI4OTYxOTA0NyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1758010003&x-orig-sign=DOKV9R%2FDCIvrrzukNrsQpPj%2BtJo%3D)
+<img width="1416" height="772" alt="image" src="https://github.com/user-attachments/assets/7af0ba53-b9eb-481a-9ebc-a7d62bb4f242" />
 
 我与他进行了初步沟通，他有些顾虑，觉得我是做后端的，是否能为他修改简历。我告诉他，修改简历的思路和逻辑都是通用的，无论前端后端还是客户端，A面的内核都是相通的。
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/178a1a0c697d40c5a54447a1eccb9cb3~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5aSn5Y6C56CB5Yac6ICBQQ==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjE0NzgwMzI4OTYxOTA0NyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1758010089&x-orig-sign=lAcaBBaP5CLsiW6oMsQAzIFZrf4%3D)
+<img width="2558" height="1426" alt="image" src="https://github.com/user-attachments/assets/d3f91223-de49-40b3-ae3b-611a0ac34513" />
 
 在进一步沟通后，他将脱敏简历发送到我的邮箱中。所以，这位“小林”同学（化名），就成了我们今天故事的主角。
  
@@ -49,15 +49,15 @@ published: true
 
 (小林简历 V1.0 - 节选)
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/43a7c26dd11849a392af14bfd06ba6f3~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5aSn5Y6C56CB5Yac6ICBQQ==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjE0NzgwMzI4OTYxOTA0NyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1758010151&x-orig-sign=XTvLjzzshrIJBFp6tUxAPdV1GsU%3D)
+<img width="2060" height="694" alt="image" src="https://github.com/user-attachments/assets/ec2ae78a-b0c5-459e-b58e-f30a79c12afe" />
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/831d506b6184468ba9d1e873b4653ac3~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5aSn5Y6C56CB5Yac6ICBQQ==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjE0NzgwMzI4OTYxOTA0NyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1758010279&x-orig-sign=VNyJdEp1jwGpYOhII3V9IcmEDrs%3D)
+<img width="2040" height="778" alt="image" src="https://github.com/user-attachments/assets/eb0263fd-ffc6-4c9d-839e-00fe27c67d7f" />
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c47bd45b11a34e5fa53c687020b901d7~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5aSn5Y6C56CB5Yac6ICBQQ==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjE0NzgwMzI4OTYxOTA0NyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1758010197&x-orig-sign=MP%2FB%2BIwPYlrNU%2Fg%2BEpW%2F9sMeaZA%3D)
+<img width="1958" height="836" alt="image" src="https://github.com/user-attachments/assets/c4a43867-5db8-4def-85e2-313d1c71274a" />
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/87325a3bface446886fb1c9c683d38da~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5aSn5Y6C56CB5Yac6ICBQQ==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjE0NzgwMzI4OTYxOTA0NyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1758010217&x-orig-sign=gNayXOi64TsuplCEBGL%2BYDQi1Io%3D)
+<img width="2018" height="1308" alt="image" src="https://github.com/user-attachments/assets/feb875ba-3f08-477f-9b98-edc2c9290106" />
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/5d5ccabf5fb94f9aa884f5cb76df9327~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5aSn5Y6C56CB5Yac6ICBQQ==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjE0NzgwMzI4OTYxOTA0NyJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1758010232&x-orig-sign=8879XQhKuHbeeywsIFtouW%2BaBu0%3D)
+<img width="2086" height="1332" alt="image" src="https://github.com/user-attachments/assets/c56da7db-c0c1-40ab-906e-24403cf95f2c" />
 
 > 老A诊断： **优秀的工程师，平庸的简历**
 
